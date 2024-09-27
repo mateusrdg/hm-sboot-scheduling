@@ -1,0 +1,83 @@
+{
+    "containerDefinitions": [
+        {
+            "name": "healthmed-scheduling",
+            "image": "211125787133.dkr.ecr.us-east-2.amazonaws.com/healthmed/scheduling",
+            "cpu": 0,
+            "portMappings": [
+                {
+                    "name": "healthmed-scheduling-80-tcp",
+                    "containerPort": 80,
+                    "hostPort": 80,
+                    "protocol": "tcp",
+                    "appProtocol": "http"
+                }
+            ],
+            "secrets": [
+                {
+                    "name": "AWS_ACCESS_KEY",
+                    "valueFrom": "arn:aws:secretsmanager:us-east-2:211125787133:secret:aws-Skpfk4:AWS_ACCESS_KEY::"
+                },
+                {
+                    "name": "AWS_ENDPOINT_CONSULTA",
+                    "valueFrom": "arn:aws:secretsmanager:us-east-2:211125787133:secret:aws-Skpfk4:AWS_ENDPOINT_CONSULTA::"
+                },
+                {
+                    "name": "AWS_SECRET_ACCESS_KEY",
+                    "valueFrom": "arn:aws:secretsmanager:us-east-2:211125787133:secret:aws-Skpfk4:AWS_SECRET_ACCESS_KEY::"
+                },
+                {
+                    "name": "COGNITO_CLIENT_ID",
+                    "valueFrom": "arn:aws:secretsmanager:us-east-2:211125787133:secret:aws-Skpfk4:COGNITO_CLIENT_ID::"
+                },
+                {
+                    "name": "COGNITO_USERPOOL",
+                    "valueFrom": "arn:aws:secretsmanager:us-east-2:211125787133:secret:aws-Skpfk4:COGNITO_USERPOOL::"
+                },
+                {
+                    "name": "COGNITO_CLIENT_SECRET",
+                    "valueFrom": "arn:aws:secretsmanager:us-east-2:211125787133:secret:aws-Skpfk4:COGNITO_CLIENT_SECRET::"
+                },
+                {
+                    "name": "JWK_SET_URI,",
+                    "valueFrom": "arn:aws:secretsmanager:us-east-2:211125787133:secret:aws-Skpfk4:JWK_SET_URI,::"
+                }
+            ],
+            "essential": true,
+            "environment": [],
+            "environmentFiles": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "ulimits": [],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/health-med-scheduling-task-definition",
+                    "mode": "non-blocking",
+                    "awslogs-create-group": "true",
+                    "max-buffer-size": "25m",
+                    "awslogs-region": "us-east-2",
+                    "awslogs-stream-prefix": "ecs"
+                },
+                "secretOptions": []
+            },
+            "systemControls": []
+        }
+    ],
+    "family": "health-med-scheduling-task-definition",
+    "taskRoleArn": "arn:aws:iam::211125787133:role/ecsTaskExecutionRole",
+    "executionRoleArn": "arn:aws:iam::211125787133:role/ecsTaskExecutionRole",
+    "networkMode": "awsvpc",
+    "volumes": [],
+    "placementConstraints": [],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "1024",
+    "memory": "3072",
+    "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
+    },
+    "tags": []
+}
