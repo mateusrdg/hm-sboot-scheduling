@@ -26,7 +26,6 @@ public class ScheduleServiceImp implements ScheduleServicePort {
     }
 
     @SqsListener("consulta")
-    @PostConstruct
     public void loadMessageFromSQS(String message) {
         AppointmentSchedule appointmentSchedule;
         try {
