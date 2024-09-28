@@ -28,6 +28,6 @@ public class EmailService {
                         .withSubject(new com.amazonaws.services.simpleemail.model.Content().withCharset("UTF-8").withData("Health&Med - Nova consulta agendada")))
                 .withSource("mateus.rodrigues.alv@gmail.com");
 
-        SendEmailResult result = sesClient.sendEmail(request);
+        sesClient.sendEmail(request);
     }
 }
